@@ -13,6 +13,7 @@
     <modules>
         <module>events-input</module>
         <module>events-aggregator</module>
+        <module>results-persister</module>
     </modules>
 
     <dependencyManagement>

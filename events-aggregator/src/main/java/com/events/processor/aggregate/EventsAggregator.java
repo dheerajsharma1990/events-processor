@@ -37,6 +37,8 @@ public class EventsAggregator {
             rdd.foreach(record -> System.out.println(record._2));
         });
 
+
+
         ssc.start();
         ssc.awaitTermination();
 
