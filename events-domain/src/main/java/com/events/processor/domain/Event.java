@@ -1,4 +1,4 @@
-package com.events.processor.input.domain;
+package com.events.processor.domain;
 
 import java.io.Serializable;
 import java.util.HashMap;
@@ -41,5 +41,14 @@ public class Event implements Serializable {
     @Override
     public int hashCode() {
         return eventId != null ? eventId.hashCode() : 0;
+    }
+
+    @Override
+    public String toString() {
+        return "Event{" +
+                "eventId='" + eventId + '\'' +
+                ", visitorId='" + visitorId + '\'' +
+                ", trackedExperiments=" + trackedExperiments +
+                '}';
     }
 }

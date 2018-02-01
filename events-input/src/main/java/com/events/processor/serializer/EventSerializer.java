@@ -1,6 +1,6 @@
 package com.events.processor.serializer;
 
-import com.events.processor.input.domain.Event;
+import com.events.processor.domain.Event;
 import io.protostuff.LinkedBuffer;
 import io.protostuff.ProtostuffIOUtil;
 import io.protostuff.Schema;
@@ -18,7 +18,6 @@ public class EventSerializer implements Serializer<Event> {
 
     }
 
-
     @Override
     public void close() {
 
@@ -28,8 +27,7 @@ public class EventSerializer implements Serializer<Event> {
     public byte[] serialize(String arg0, Event event) {
         try {
             Schema schema = RuntimeSchema.getSchema(event.getClass());
-            return ProtostuffIOUtil.toByteArray(event, schema,
-                    getApplicationBuffer());
+            return ProtostuffIOUtil.toByteArray(event, schema, getApplicationBuffer());
         } finally {
             getApplicationBuffer().clear();
         }

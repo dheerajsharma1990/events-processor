@@ -1,6 +1,8 @@
 package com.events.processor.aggregate;
 
 
+import com.events.processor.aggregate.deserializer.EventDecoder;
+import com.events.processor.domain.Event;
 import kafka.serializer.StringDecoder;
 import org.apache.spark.SparkConf;
 import org.apache.spark.api.java.JavaSparkContext;
@@ -26,10 +28,10 @@ public class EventsAggregator {
 
         Map<String, String> kafkaParams = new HashMap<>();
         kafkaParams.put("metadata.broker.list", "localhost:9092");
-        Set<String> topics = Collections.singleton("test");
+        Set<String> topics = Collections.singleton("VisitorsTracking");
 
-        JavaPairInputDStream<String, String> directKafkaStream = KafkaUtils.createDirectStream(ssc,
-                String.class, String.class, StringDecoder.class, StringDecoder.class, kafkaParams, topics);
+        JavaPairInputDStream<String, Event> directKafkaStream = KafkaUtils.createDirectStream(ssc,
+                String.class, Event.class, StringDecoder.class, EventDecoder.class, kafkaParams, topics);
 
         directKafkaStream.foreachRDD(rdd -> {
             System.out.println("--- New RDD with " + rdd.partitions().size()
@@ -41,6 +43,5 @@ public class EventsAggregator {
 
         ssc.start();
         ssc.awaitTermination();
-
     }
 }

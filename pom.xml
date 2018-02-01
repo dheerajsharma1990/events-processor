@@ -7,10 +7,11 @@
     <groupId>com.events.processor</groupId>
     <artifactId>events-processor</artifactId>
     <packaging>pom</packaging>
-    <version>2.2.0-SNAPSHOT</version>
+    <version>1.0.0-SNAPSHOT</version>
 
 
     <modules>
+        <module>events-domain</module>
         <module>events-input</module>
         <module>events-aggregator</module>
         <module>results-persister</module>
