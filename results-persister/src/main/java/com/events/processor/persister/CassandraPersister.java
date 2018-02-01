@@ -1,6 +1,9 @@
 package com.events.processor.persister;
 
 import com.datastax.driver.core.Session;
+import com.events.processor.persister.domain.Experiment;
+import com.events.processor.persister.query.CassandraQuery;
+import com.events.processor.persister.query.Query;
 
 public class CassandraPersister {
 
@@ -10,6 +13,9 @@ public class CassandraPersister {
         Session session = cassandraConnector.connect("localhost", 9042);
         cassandraPersister.createKeyspace("tracking", "SimpleStrategy", 1, session);
         cassandraPersister.createColumnFamily("tracking","visitors_count_by_experiment", session);
+        Query query = new CassandraQuery(session);
+        Experiment experiment = query.getExperimentVisitors(100);
+        System.out.println(experiment);
         cassandraConnector.close();
 
     }
