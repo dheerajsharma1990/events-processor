@@ -21,6 +21,10 @@ public class Variant implements Serializable {
         this.visitors = visitors;
     }
 
+    public int getVariantNumber() {
+        return variantNumber;
+    }
+
     public long getVisitors() {
         return visitors;
     }

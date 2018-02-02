@@ -16,12 +16,26 @@ public class Experiment implements Serializable {
         this.id = id;
     }
 
+    public Experiment(int id, String name, Collection<Variant> variants) {
+        this.id = id;
+        this.name = name;
+        this.variants = variants;
+    }
+
     public String getName() {
         return name;
     }
 
     public void addVariant(Variant variant) {
         this.variants.add(variant);
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public Collection<Variant> getVariants() {
+        return variants;
     }
 
     @Override
