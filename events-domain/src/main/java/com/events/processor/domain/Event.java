@@ -10,13 +10,13 @@ public class Event implements Serializable {
 
     private String visitorId;
 
-    private Map<String,Integer> trackedExperiments = new HashMap<>();
+    private Map<Integer, Integer> trackedExperiments = new HashMap<>();
 
     public Event() {
 
     }
 
-    public Event(String eventId, String visitorId, Map<String,Integer> trackedExperiments) {
+    public Event(String eventId, String visitorId, Map<Integer, Integer> trackedExperiments) {
         this.eventId = eventId;
         this.visitorId = visitorId;
         this.trackedExperiments.putAll(trackedExperiments);
@@ -24,6 +24,15 @@ public class Event implements Serializable {
 
     public String getEventId() {
         return eventId;
+    }
+
+
+    public String getVisitorId() {
+        return this.visitorId;
+    }
+
+    public Map<Integer,Integer> getTrackedExperiments() {
+        return this.trackedExperiments;
     }
 
 
